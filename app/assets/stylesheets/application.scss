@@ -18,6 +18,8 @@
  body {
      margin: 0;
      padding: 0;
+     background-color: black;
+     color: white;
      
  }
 
@@ -95,5 +97,17 @@
      @media (max-width: 340px){
         padding: 10%;
     }
+
+
+.notice, #notice {
+    background: #ffb;
+    border-radius: 0.5em;
+    border: solid 0.177em red;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 1em;
+    padding: 1em 1.414em;
+    text-align: center;
+}
      
  }
