@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Welcome to my first ruby on rails app.
+#### This simple shopping cart app allows the user to add the items into the cart, allows the user to empty the cart and allows the user to checkout with their order.
 
-Things you may want to cover:
+* Ruby version : 2.5.1-p57
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
+* Rails version : 5.1.6
 
 * Database initialization
+```
+1. USE depot_development;
+
+If you want to show orders.
+SELECT * FROM orders;
+```
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+ruby bin/rails test
+```
+
 
 * Deployment instructions
 
-* ...
+```
+ruby bin/rails server
+```
