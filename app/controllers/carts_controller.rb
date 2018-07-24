@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  # Cart will automatically be given permissions to be shown, edited, updated and destroyed as soon as it is created.
+  # If the cart id is invalid it will be saved and the user redirected to the homepage. 
+  before_action :set_cart, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   # GET /carts
   # GET /carts.json
@@ -9,8 +11,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   # GET /carts/1.json
-  def show
-  end
+  def show; end
 
   # GET /carts/new
   def new
@@ -18,11 +19,11 @@ class CartsController < ApplicationController
   end
 
   # GET /carts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /carts
   # POST /carts.json
+  # Creates a new cart and puts out a notice that it has been created. The cart is created in the sidebar. 
   def create
     @cart = Cart.new(cart_params)
 
@@ -39,6 +40,7 @@ class CartsController < ApplicationController
 
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
+  # Incrementally updates the cart as soon as one of the line items is added or incremented.
   def update
     respond_to do |format|
       if @cart.update(cart_params)
@@ -53,30 +55,30 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1
   # DELETE /carts/1.json
+  # Destroys the cart if no line items are visible and hides it.
   def destroy
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_index_url, notice: 'Your cart is currently empty. Add something to it to proceed!'}
+      format.html { redirect_to store_index_url, notice: 'Your cart is currently empty. Add something to it to proceed!' }
       format.json { head :no_content }
     end
   end
 
-
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
-    def invalid_cart
-      logger.error "Attemp to access invalid cart #{params[:id]}"
-      redirect_to store_index_url, notice: 'Invalid cart'
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cart_params
+    params.fetch(:cart, {})
+  end
+  # If the user somehow tries to access cart num 3 when only num 1 and 2 exist, this will pop up and redirect them back.
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    redirect_to store_index_url, notice: 'Invalid cart'
+  end
 end

@@ -14,7 +14,7 @@
  *= require_self
  */
 
-
+//General colors for the application. 
  body {
      margin: 0;
      padding: 0;
@@ -22,7 +22,7 @@
      color: white;
      
  }
-
+ 
  header.main {
      text-align: center;
      @media (min-width: 30em){
@@ -36,7 +36,7 @@
      }
      
  }
-
+ // Sets the position and color declarations for the content.
  .content {
      margin: 0;
      padding: 0;
@@ -85,7 +85,7 @@
          padding: 0.5em;
      }
  }
-
+// Main time rules
  .time{
      
      background-color: red;
@@ -100,10 +100,10 @@
 
 
 .notice, #notice {
-    background: #ffb;
+    background: black;
     border-radius: 0.5em;
     border: solid 0.177em red;
-    color: black;
+    color: ghostwhite;
     font-weight: bold;
     margin-bottom: 1em;
     padding: 1em 1.414em;
@@ -124,6 +124,84 @@
          padding: 1.414em;
          @media (min-width: 30em){
              margin: 0;
+         }
+     }
+ }
+
+ .depot_form {
+     padding: 0 1em;
+     h1 {
+         font-size: 1.99em;
+         line-height: 1.41em;
+         margin-bottom: 0.5em;
+         padding: 0;
+     }
+     .field, .actions {
+         margin-bottom: 0.5em;
+         padding: 0;
+     }
+     .actions {
+         text-align: right;
+         padding: 1em 0;
+     }
+     input, textarea, select, option {
+         border: solid thin ghostwhite;
+         box-sizing: border-box;
+         font-size: 1em;
+         padding: 0.5em;
+         width: 100%;
+     }
+     label {
+         padding: 0.5em;
+     }
+     input[type="submit"] {
+         background-color: black;
+         border-radius: 0.354em;
+         border: solid thin ghostwhite;
+         color: ghostwhite;
+         font-size: 1.41em;
+         font-weight: bold;
+         padding: 0.354em 1em;
+     }
+     input[type="submit"]:hover {
+         background-color: #9d9;
+     }
+
+     #error_explanation {
+         background-color: black;
+         border-radius: 1em;
+         border: solid thin red;
+         color: ghostwhite;
+         margin-bottom: 0.5em;
+         padding: 0.5em;
+         width: 100%;
+         h2{
+             background: none;
+             color: red;
+             font-size: 1.41em;
+             line-height: 1.41em;
+             padding: 1em;
+         }
+         ul{
+             margin-top:0;
+             li{
+                 font-size: 1em;
+             }
+         }
+     }
+
+     .field_with_errors{
+         background: none;
+         color: red;
+         width: 100%;
+         label{
+             font-weight: bold;
+         }
+         label::before{
+             content: "! ";
+         }
+         input.textarea{
+            background-color: pink;
          }
      }
  }
